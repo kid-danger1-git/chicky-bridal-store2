@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicky Bridal Robes - Your One-Stop Bridal Party Shop</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #f8e1f4;
+            --secondary: #f5c6e6;
+            --accent: #e75480;
+            --dark: #333;
+            --light: #fff;
+            --gold: #d4af37;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-left: 10px;
+            font-weight: 600;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .phone {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        .instagram {
+            margin-top: 5px;
+            color: var(--dark);
+            text-decoration: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(248, 225, 244, 0.8), rgba(248, 225, 244, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8e1f4"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23e75480" stroke-width="1" opacity="0.2"/></svg>');
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--dark);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(231, 84, 128, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #d84370;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 84, 128, 0.4);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .product-category {
+            margin-bottom: 60px;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-title span {
+            margin-right: 10px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--primary);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 3rem;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-details {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--primary);
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .contact-info-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail i {
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent);
+            color: var(--light);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #d84370;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-tagline {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: var(--light);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Image Upload Instructions */
+        .image-instructions {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .image-instructions h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .image-instructions ol {
+            margin-left: 20px;
+        }
+        
+        .image-instructions li {
+            margin-bottom: 10px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+            }
+            
+            .contact-info {
+                align-items: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-info-card {
+                margin-right: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">✨👑</span>
+                    <h1>Chicky Bridal Robes</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="contact-info">
+                    <div class="phone">+255 756 049 761</div>
+                    <a href="https://instagram.com/Chicky_bridalrobes" class="instagram">@Chicky_bridalrobes</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Your One-Stop Bridal Party Shop!</h2>
+            <p>Elevate your bridal experience with our exquisite collection of robes, pajamas, and accessories. Make your special day unforgettable with Chicky Bridal Robes.</p>
+            <a href="#products" class="cta-button">Explore Our Collection</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+            </div>
+            
+            <!-- Image Upload Instructions -->
+            <div class="image-instructions">
+                <h3>How to Add Your Product Images</h3>
+                <ol>
+                    <li>Take clear, well-lit photos of your products</li>
+                    <li>Save them in a folder named "images" in the same location as this HTML file</li>
+                    <li>Rename your images to match the product names (e.g., "shirt-dress-robe.jpg")</li>
+                    <li>Replace the placeholder images below with your actual product photos</li>
+                </ol>
+                <p><strong>Note:</strong> The current images are placeholders. You'll need to replace them with your actual product photos.</p>
+            </div>
+            
+            <!-- Robes & Pajamas -->
+            <div class="product-category">
+                <h3 class="category-title"><span>💃</span> Robes & Pajamas</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Shirt+Dress+Robe" alt="Shirt Dress Robe">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Shirt Dress Robes</h4>
+                            <p class="product-price">30,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Flora+Robe" alt="Flora Robe">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Flora Robes</h4>
+                            <p class="product-price">35,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=White+Pajama+Feathered" alt="White Pajama Feathered">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">White Pajama Feathered</h4>
+                            <p class="product-price">70,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Bridesmaid+Robe+Plain" alt="Bridesmaid Robe Plain">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Bridesmaid Robes (Plain)</h4>
+                            <p class="product-price">30,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Bridesmaid+Robe+Personalised" alt="Bridesmaid Robe Personalised">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Bridesmaid Robes (Personalised)</h4>
+                            <p class="product-price">45,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=White+Pajama" alt="White Pajama">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">White Pajama</h4>
+                            <p class="product-price">40,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Pyjama+on+Sale" alt="Pyjama on Sale">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Pyjama on Sale</h4>
+                            <p class="product-price">15,000 TZS | 25,000 TZS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accessories -->
+            <div class="product-category">
+                <h3 class="category-title"><span>👑</span> Accessories</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Bride-to-Be+Sash" alt="Bride-to-Be Sash">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Bride-to-Be Sash</h4>
+                            <p class="product-price">15,000 TZS | Rent: 5,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Props" alt="Props">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Props</h4>
+                            <p class="product-price">5,000 TZS @pc</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Shades" alt="Shades">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Shades</h4>
+                            <p class="product-price">10,000 | 15,000 | 20,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Bridal+Robes+Lace" alt="Bridal Robes Lace">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Bridal Robes Lace</h4>
+                            <p class="product-price">Rent: 30,000 - 80,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Bride+Crown" alt="Bride Crown">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Bride Crown</h4>
+                            <p class="product-price">15,000 TZS</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x200/f5c6e6/e75480?text=Customised+Flops" alt="Customised Flops">
+                        </div>
+                        <div class="product-details">
+                            <h4 class="product-name">Customised Flops</h4>
+                            <p class="product-price">15,000 TZS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info-card">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-detail">
+                        <i>📞</i>
+                        <p>+255 756 049 761</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📱</i>
+                        <p>@Chicky_bridalrobes</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>💌</i>
+                        <p>chickybridalrobes@gmail.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i>📍</i>
+                        <p>Tanzania</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Chicky Bridal Robes</div>
+                <p class="footer-tagline">Because every bride deserves elegance, and every squad deserves style.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/Chicky_bridalrobes" class="social-link">📱</a>
+                    <a href="#" class="social-link">💬</a>
+                    <a href="#" class="social-link">📧</a>
+                </div>
+                <p class="copyright">&copy; 2023 Chicky Bridal Robes. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
